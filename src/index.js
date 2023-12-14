@@ -1,8 +1,10 @@
-// const { default: Example } = require("./scripts/example");
-import Example from "./scripts/example";
+import Game from "./scripts/game.js";
+import GameView from "./scripts/game-view";
 
-document.addEventListener("DOMContentLoaded", () => {
-    const main = document.getElementById("main");
-    new Example(main);
-    console.log("hello world");
-});
+const gameCanvas = document.getElementById("game-canvas");
+const ctx = gameCanvas.getContext("2d");
+
+gameCanvas.width = GameView.boardWidth;
+gameCanvas.height = GameView.boardHeight;
+
+GameView.drawBoard(ctx, GameView.boardColor, 0, 0, GameView.boardWidth, GameView.boardHeight);
