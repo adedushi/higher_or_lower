@@ -1,5 +1,6 @@
 import Game from "./scripts/game.js";
 import GameView from "./scripts/game-view";
+import Product from "./scripts/product.js";
 
 const gameCanvas = document.getElementById("game-canvas");
 const ctx = gameCanvas.getContext("2d");

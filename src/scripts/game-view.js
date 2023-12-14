@@ -3,8 +3,8 @@ class GameView {
 
     }
     static boardColor = "pink";
-    static boardWidth = 1000;
-    static boardHeight = 1000;
+    static boardWidth = 500;
+    static boardHeight = window.screen.height / 3;
 
     static drawBoard(ctx, color, x = 0, y = 0, width, height) {
     ctx.clearRect(x, y, width, height)
