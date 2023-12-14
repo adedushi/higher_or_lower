@@ -19,7 +19,8 @@ In addition, this project will include:
  - A production readme
  
 ## Wireframe
-![Preliminary Wireframe](https://github.com/adedushi/Higher-or-Lower/blob/main/Preliminary%20Wireframe.png)
+![Preliminary Wireframe](https://github.com/adedushi/higher_or_lower/blob/main/Preliminary%20Wireframe.png)
+
 -   Navigation bar includes links to this project's Github repo, my LinkedIn and About
 -   Game controls to Start, Exit, and Reset will also appear in the Navigation Bar
 
