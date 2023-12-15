@@ -29,14 +29,13 @@ In addition, this project will include:
 
 This project will make use of the following technologies:
 
- - Canvas API to design the game board
  - Webpack to bundle source Javascript code  
  - npm to manage project dependencies  
  - BestBuy API to obtain product and price information
 
 ## Implementation Timeline
 
--   Thursday Afternoon: Setup project, implementing webpack. Create GitHub repo and securely store API keys. Create an initial Canvas design for the web app.
+-   Thursday Afternoon: Setup project, implementing webpack. Create GitHub repo and securely store API keys. Create an initial HTML design for the web app.
 -   Friday & Weekend: Familiarize with the Best Buy API. Create Product and Game classes. Display test data from the API.
 -   Monday: Add functionality to navigation bar and game controls. Finalize placeholder price algorithm.
 -   Tuesday: Focus on styling and user interface improvements. Test the game with users. Add sounds/easter eggs if time allows.
