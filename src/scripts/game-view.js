@@ -1,7 +1,10 @@
-class GameView {
-    constructor (){
+import Product from "./product";
 
+class GameView {
+    constructor (product){
+        this.product = product
     }
+
     static boardColor = "pink";
     static boardWidth = 500;
     static boardHeight = window.screen.height / 3;
@@ -13,6 +16,12 @@ class GameView {
     }
 
 
+    static displayProduct(product){
+        const img = new Image();
+        img.src = product.image;
+    }
 }
+
+
 
 export default GameView;

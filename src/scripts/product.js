@@ -1,6 +1,12 @@
+const productDisplay = document.querySelector('.product-display');
+
 class Product{
-    constructor(product_id){
-        this.product_id = product_id;
+    constructor(id, name, image, price, URL){
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.URL = URL;
     }
 
 }
@@ -111,7 +117,7 @@ const products = [
 function generateURL() {
     let product_id = products[Math.floor(Math.random() * products.length)];
     const API_KEY = "";
-    return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url&format=json`
+    return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
 }
 
 const fetchProduct = async (e) => {
@@ -119,28 +125,39 @@ const fetchProduct = async (e) => {
 
     try {
         let res = await fetch(generateURL());
+        
 
     if (res.ok){
         let resBody = await res.json();
-        let productName = resBody.products[0].name
-        let productImage = resBody.products[0].image
-        let productPrice = resBody.products[0].salePrice
-        let productURL = resBody.products[0].url
-        console.log(productName)
-        console.log(productPrice)
-        console.log(productImage)
-        console.log(productURL)
+
+        let id = resBody.products[0].sku
+        let name = resBody.products[0].name
+        let image = resBody.products[0].image
+        let price = resBody.products[0].salePrice
+        let URL = resBody.products[0].url
+
+        let product = new Product(id, name, image, price, URL);
+
+        let newProduct = document.createElement('img')
+        newProduct.src = product.image
+
+        if(productDisplay.children) {
+            productDisplay.childNodes.forEach(child => child.remove());
+        }
+
+        productDisplay.append(newProduct);
+
+
     }
 
     } catch(err) {
         console.error(err);
     }
+
 }
 
 const gameCanvas = document.getElementById("game-canvas");
 gameCanvas.addEventListener('click', fetchProduct);
-
-
 
 
 export default Product;
