@@ -6,6 +6,9 @@ const higherButton = document.querySelector('#higher')
 const lowerButton = document.querySelector('#lower')
 const scoreBoard = document.querySelector('#score')
 
+const productHistory = [];
+
+
 class Game {
     constructor(product) {
         this.product = product;
@@ -13,9 +16,14 @@ class Game {
     }
 
     static generateURL() {
-        let product_id = products[Math.floor(Math.random() * products.length)];
+        let product_id = Game.selectProduct()
+        while (productHistory.indexOf(product_id) > -1) product_id = Game.selectProduct()
         const API_KEY = "";
         return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
+    }
+
+    static selectProduct(){
+        return products[Math.floor(Math.random() * products.length)];
     }
 
     async fetchProduct(e) {
@@ -72,11 +80,13 @@ class Game {
 
     correct(){
         this.score++;
+        productHistory.push(this.product.id)
         scoreBoard.innerHTML = `Score: ${this.score}`;
     }
 
     incorrect() {
         this.score = 0;
+        productHistory.splice(0, productHistory.length);
         scoreBoard.innerHTML = `Score: ${this.score}`
     }
 
