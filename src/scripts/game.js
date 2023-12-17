@@ -1,10 +1,12 @@
 import Product from "./product.js";
 import products from "./products.js";
-const start = document.querySelector("#start");
+const start = document.querySelector('#start');
 const productDisplay = document.querySelector('.product-display');
 const higherButton = document.querySelector('#higher')
 const lowerButton = document.querySelector('#lower')
-const scoreBoard = document.querySelector('#score')
+const currentScore = document.querySelector('#current-score')
+const highScore = document.querySelector('#high-score')
+let lsHighScore = JSON.parse(localStorage.getItem("highScore")) || 0;
 
 const productHistory = [];
 
@@ -80,20 +82,30 @@ class Game {
 
     correct(){
         this.score++;
-        productHistory.push(this.product.id)
-        scoreBoard.innerHTML = `Score: ${this.score}`;
+        this.updateHighScore();
+        productHistory.push(this.product.id);
+        currentScore.innerHTML = `Score: ${this.score}`;
     }
 
     incorrect() {
         this.score = 0;
         productHistory.splice(0, productHistory.length);
-        scoreBoard.innerHTML = `Score: ${this.score}`
+        currentScore.innerHTML = `Score: ${this.score}`;
+    }
+
+    updateHighScore() {
+        if (this.score > parseInt(lsHighScore)) {
+            localStorage.setItem("highScore", this.score);
+            lsHighScore = localStorage.getItem("highScore");
+        }
+        highScore.innerHTML = `High Score: ${lsHighScore}`;
     }
 
 }
 
 let game = new Game()
 
+document.addEventListener('DOMContentLoaded', game.updateHighScore.bind(game));
 start.addEventListener('click', game.fetchProduct.bind(game));
 higherButton.addEventListener('click', game.guessHigher.bind(game));
 higherButton.addEventListener('click', game.fetchProduct.bind(game));
