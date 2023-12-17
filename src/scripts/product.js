@@ -21,7 +21,7 @@ class Product{
             placeHolder = (Math.ceil(placeHolder / 100) * 100)
         }
 
-        return Math.abs(price - placeHolder) > .99 ? placeHolder : this.generatePlaceholderPrice(price)
+        return Math.abs(price - placeHolder) > 1.01 ? placeHolder : this.generatePlaceholderPrice(price)
     }
 
     assignPlaceholderPrice(){

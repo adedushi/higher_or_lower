@@ -1,12 +1,5 @@
 import Product from "./product.js";
 import products from "./products.js";
-const start = document.querySelector('#start');
-const productDisplay = document.querySelector('.product-display');
-const higherButton = document.querySelector('#higher')
-const lowerButton = document.querySelector('#lower')
-const currentScore = document.querySelector('#current-score')
-const highScore = document.querySelector('#high-score')
-let lsHighScore = JSON.parse(localStorage.getItem("highScore")) || 0;
 
 const productHistory = [];
 
@@ -20,7 +13,8 @@ class Game {
     static generateURL() {
         let product_id = Game.selectProduct()
         while (productHistory.indexOf(product_id) > -1) product_id = Game.selectProduct()
-        const API_KEY = "";
+
+        const API_KEY = "FTJXEwF95489m9I5HzWazZ0l";
         return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
     }
 
@@ -47,22 +41,6 @@ class Game {
                 this.product = new Product(id, name, image, price, URL);
                 this.product.assignPlaceholderPrice()
 
-                let productImage = document.createElement('img')
-                productImage.src = this.product.image
-
-                let productPlaceholderPrice = document.createElement('h1')
-                productPlaceholderPrice.innerHTML = this.product.placeHolderPrice
-
-
-                while (productDisplay.firstChild) {
-                    productDisplay.removeChild(productDisplay.firstChild);
-                }
-
-                productDisplay.append(productImage);
-                productDisplay.append(productPlaceholderPrice);
-                
-                console.log(this.product);
-
             } else {
                 throw new Error(res)
             }
@@ -82,34 +60,19 @@ class Game {
 
     correct(){
         this.score++;
-        this.updateHighScore();
+        // this.updateHighScore();
         productHistory.push(this.product.id);
-        currentScore.innerHTML = `Score: ${this.score}`;
+        // currentScore.innerHTML = `Score: ${this.score}`;
     }
 
     incorrect() {
         this.score = 0;
         productHistory.splice(0, productHistory.length);
-        currentScore.innerHTML = `Score: ${this.score}`;
+        // currentScore.innerHTML = `Score: ${this.score}`;
     }
 
-    updateHighScore() {
-        if (this.score > parseInt(lsHighScore)) {
-            localStorage.setItem("highScore", this.score);
-            lsHighScore = localStorage.getItem("highScore");
-        }
-        highScore.innerHTML = `High Score: ${lsHighScore}`;
-    }
+
 
 }
-
-let game = new Game()
-
-document.addEventListener('DOMContentLoaded', game.updateHighScore.bind(game));
-start.addEventListener('click', game.fetchProduct.bind(game));
-higherButton.addEventListener('click', game.guessHigher.bind(game));
-higherButton.addEventListener('click', game.fetchProduct.bind(game));
-lowerButton.addEventListener('click', game.guessLower.bind(game));
-lowerButton.addEventListener('click', game.fetchProduct.bind(game));
 
 export default Game;
