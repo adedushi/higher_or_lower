@@ -25,7 +25,7 @@ class Game {
     static generateURL() {
         let product_id = Game.selectProduct()
         while (productHistory.indexOf(product_id) > -1) product_id = Game.selectProduct()
-        const API_KEY = "";
+        const API_KEY = "FTJXEwF95489m9I5HzWazZ0l";
         return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
     }
 
@@ -98,7 +98,7 @@ class Game {
         this.updateHighScore();
         productHistory.push(this.product.id);
         currentScore.innerHTML = `Score: ${this.score}`;
-        guessFeedback.innerHTML = `${success[Math.floor(Math.random() * success.length)]} The actual retail price is $${this.product.price}`
+        guessFeedback.innerHTML = `${success[Math.floor(Math.random() * success.length)]} The actual retail price is $${this.product.price.toFixed(2)}`
         productLink.href = `${this.product.URL}`;
         productLink.style.visibility = "";
     }
@@ -107,7 +107,7 @@ class Game {
         this.score = 0;
         productHistory.splice(0, productHistory.length);
         currentScore.innerHTML = `Score: ${this.score}`;
-        guessFeedback.innerHTML = `${failure[Math.floor(Math.random() * failure.length)]} The actual retail price is $${this.product.price}`
+        guessFeedback.innerHTML = `${failure[Math.floor(Math.random() * failure.length)]} The actual retail price is $${this.product.price.toFixed(2)}`
         productLink.href = `${this.product.URL}`;
         productLink.style.visibility = "";
     }

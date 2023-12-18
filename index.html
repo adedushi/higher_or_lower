@@ -14,36 +14,44 @@
 <body>
     <h1>Higher or Lower</h1>
 
-    <table>
-        <tr>
-            <th>Product</th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>
+    <div class="program_container">
+        <div class="main_content">
+
+            <div class="nav_bar">
+                <h2 class="open_modal_button">Rules</h2>
+                <div class="nav_links">
+                    <a href="https://github.com/adedushi/higher_or_lower">GH</a>
+                    <a href="https://www.linkedin.com/in/adedushi">LI</a>
+                </div>
+                <div class="scores">
+                    <h6 id="high-score">High Score: 0</h6>
+                    <h6 id="current-score">Score: 0</h6>
+                </div>
+            </div>
+
+            <div class="product">Product
                 <div id="product-display"></div>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
+            </div>
+
+
+            <div class="game">Game
                 <h6 id="placeholder-price"></h6>
                 <button type="submit" id="higher" style="display: block">Higher</button>
                 <button type="submit" id="lower" style="display: block">Lower</button>
-            </td>
-            <td>
                 <h6 id="feedback"></h6>
                 <a href="" target="_blank" style="visibility: hidden" id="product-link">See Product Details</a>
                 <button type="submit" id="next" style="display: none">Next</button>
-            </td>
-        </tr>
-    </table>
+            </div>
 
 
+            <button type="submit" id="start">Start</button>
+        </div>
 
-    <h6 id="high-score">High Score: 0</h6>
-    <h6 id="current-score">Score: 0</h6>
-    <button type="submit" id="start">Start</button>
+        <div class="modal">
+
+        </div>
+
+    </div>
 
 </body>
 
