@@ -38,11 +38,16 @@ class Game {
         guessFeedback.innerHTML = ""
         productLink.style.visibility = "hidden";
         console.log(this.product);
+
         let productName = document.createElement('h3')
+        productName.setAttribute("id", "product-name")
         productName.innerHTML = this.product.name
+        
 
         let productImage = document.createElement('img')
+        productImage.setAttribute("id", "product-image")
         productImage.src = this.product.image
+        
 
         placeholderPrice.innerHTML = `$${this.product.placeholderPrice}.00`
 
@@ -53,6 +58,7 @@ class Game {
 
         productDisplay.append(productName);
         productDisplay.append(productImage);
+        
     }
 
     async fetchProduct(e) {
