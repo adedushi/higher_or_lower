@@ -1,15 +1,20 @@
 import Product from "./product.js";
 import products from "./products.js";
-const start = document.querySelector('#start');
-const productDisplay = document.querySelector('.product-display');
+const startButton = document.querySelector('#start')
+const productDisplay = document.querySelector('#product-display')
+const placeholderPrice = document.querySelector('#placeholder-price')
 const higherButton = document.querySelector('#higher')
 const lowerButton = document.querySelector('#lower')
 const currentScore = document.querySelector('#current-score')
 const highScore = document.querySelector('#high-score')
-let lsHighScore = JSON.parse(localStorage.getItem("highScore")) || 0;
+const guessFeedback = document.querySelector('#feedback')
+const nextButton = document.querySelector('#next')
+const productLink = document.querySelector('#product-link')
+let lsHighScore = localStorage.getItem("highScore") || 0;
 
 const productHistory = [];
-
+const success = ["Correct!", "You're right!", "Nice one!"]
+const failure = ["Close one!", "Sorry!", "Almost!"]
 
 class Game {
     constructor(product) {
@@ -26,6 +31,28 @@ class Game {
 
     static selectProduct(){
         return products[Math.floor(Math.random() * products.length)];
+    }
+
+    displayProduct() {
+        startButton.style.display = "none";
+        guessFeedback.innerHTML = ""
+        productLink.style.visibility = "hidden";
+        console.log(this.product);
+        let productName = document.createElement('h3')
+        productName.innerHTML = this.product.name
+
+        let productImage = document.createElement('img')
+        productImage.src = this.product.image
+
+        placeholderPrice.innerHTML = `$${this.product.placeholderPrice}.00`
+
+
+        while (productDisplay.firstChild) {
+            productDisplay.removeChild(productDisplay.firstChild);
+        }
+
+        productDisplay.append(productName);
+        productDisplay.append(productImage);
     }
 
     async fetchProduct(e) {
@@ -46,22 +73,7 @@ class Game {
 
                 this.product = new Product(id, name, image, price, URL);
                 this.product.assignPlaceholderPrice()
-
-                let productImage = document.createElement('img')
-                productImage.src = this.product.image
-
-                let productPlaceholderPrice = document.createElement('h1')
-                productPlaceholderPrice.innerHTML = this.product.placeHolderPrice
-
-
-                while (productDisplay.firstChild) {
-                    productDisplay.removeChild(productDisplay.firstChild);
-                }
-
-                productDisplay.append(productImage);
-                productDisplay.append(productPlaceholderPrice);
-                
-                console.log(this.product);
+                this.displayProduct();
 
             } else {
                 throw new Error(res)
@@ -72,12 +84,13 @@ class Game {
         }
 
     }
+
     guessHigher() {
-        this.product.price > this.product.placeHolderPrice ? this.correct() : this.incorrect()
+        this.product.price > this.product.placeholderPrice ? this.correct() : this.incorrect()
     }
 
     guessLower() {
-        this.product.price < this.product.placeHolderPrice ? this.correct() : this.incorrect()
+        this.product.price < this.product.placeholderPrice ? this.correct() : this.incorrect()
     }
 
     correct(){
@@ -85,12 +98,18 @@ class Game {
         this.updateHighScore();
         productHistory.push(this.product.id);
         currentScore.innerHTML = `Score: ${this.score}`;
+        guessFeedback.innerHTML = `${success[Math.floor(Math.random() * success.length)]} The actual retail price is $${this.product.price}`
+        productLink.href = `${this.product.URL}`;
+        productLink.style.visibility = "";
     }
 
     incorrect() {
         this.score = 0;
         productHistory.splice(0, productHistory.length);
         currentScore.innerHTML = `Score: ${this.score}`;
+        guessFeedback.innerHTML = `${failure[Math.floor(Math.random() * failure.length)]} The actual retail price is $${this.product.price}`
+        productLink.href = `${this.product.URL}`;
+        productLink.style.visibility = "";
     }
 
     updateHighScore() {
@@ -101,15 +120,29 @@ class Game {
         highScore.innerHTML = `High Score: ${lsHighScore}`;
     }
 
+    changeButtons() {
+        if (nextButton.style.display === "none") {
+            nextButton.style.display = "block";
+            higherButton.style.display = "none";
+            lowerButton.style.display = "none";
+        } else {
+            nextButton.style.display = "none";
+            higherButton.style.display = "block";
+            lowerButton.style.display = "block";
+        }
+    }
+
 }
 
 let game = new Game()
 
 document.addEventListener('DOMContentLoaded', game.updateHighScore.bind(game));
-start.addEventListener('click', game.fetchProduct.bind(game));
+startButton.addEventListener('click', game.fetchProduct.bind(game));
 higherButton.addEventListener('click', game.guessHigher.bind(game));
-higherButton.addEventListener('click', game.fetchProduct.bind(game));
+higherButton.addEventListener('click', game.changeButtons.bind(game));
 lowerButton.addEventListener('click', game.guessLower.bind(game));
-lowerButton.addEventListener('click', game.fetchProduct.bind(game));
+lowerButton.addEventListener('click', game.changeButtons.bind(game));
+nextButton.addEventListener('click', game.fetchProduct.bind(game));
+nextButton.addEventListener('click', game.changeButtons.bind(game));
 
 export default Game;

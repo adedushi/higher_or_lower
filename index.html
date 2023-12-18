@@ -12,12 +12,39 @@
 </head>
 
 <body>
-    <div class="product-display"></div>
-    <h1 id="high-score">High Score: 0</h1>
-    <h1 id="current-score">Score: 0</h1>
+    <h1>Higher or Lower</h1>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                <div id="product-display"></div>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <h6 id="placeholder-price"></h6>
+                <button type="submit" id="higher" style="display: block">Higher</button>
+                <button type="submit" id="lower" style="display: block">Lower</button>
+            </td>
+            <td>
+                <h6 id="feedback"></h6>
+                <a href="" target="_blank" style="visibility: hidden" id="product-link">See Product Details</a>
+                <button type="submit" id="next" style="display: none">Next</button>
+            </td>
+        </tr>
+    </table>
+
+
+
+    <h6 id="high-score">High Score: 0</h6>
+    <h6 id="current-score">Score: 0</h6>
     <button type="submit" id="start">Start</button>
-    <button type="submit" id="higher">Higher</button>
-    <button type="submit" id="lower">Lower</button>
+
 </body>
 
 
