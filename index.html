@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./src/reset.css" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Rubik+Lines&display=swap" rel="stylesheet">
     <script src="./dist/main.js" defer></script>
     <title>Higher or Lower</title>
@@ -20,7 +21,7 @@
         <div class="main_content">
 
             <div class="info_bar">
-                <h6 class="open_modal_button">Rules</h6>
+                <h6 id="modal-open">Rules</h6>
                 <h1>Higher or Lower</h1>
                 <div class="scores">
                     <h6 id="high-score">High Score: 0</h6>
@@ -41,31 +42,42 @@
                     <h6 id="feedback"></h6>
                     <a href="" target="_blank" style="visibility: hidden" id="product-link">See Product Details</a>
                     <div class="buttons"> 
-                        <button type="submit" id="higher" style="display: block">Higher</button>
-                        <button type="submit" id="lower" style="display: block">Lower</button>
+                        <button type="submit" id="higher" style="display: none">Higher</button>
+                        <button type="submit" id="lower" style="display: none">Lower</button>
                         <button type="submit" id="next" style="display: none">Next</button>
                     </div>
                 </div>
 
             </div>
 
-            <div class="nav_links">
-                <a href="https://github.com/adedushi/higher_or_lower"><img style="height:50px;width:50px;" src="https://img.icons8.com/ios/500/github--v1.png" alt="GitHub" /></a>
-                <a href="https://www.linkedin.com/in/adedushi"><img style="height:50px;width:50px;" src="https://img.icons8.com/ios/500/linkedin.png" alt="LinkedIn" /></a>
+            <div class="bottom_bar">
+                <h3>Created by Albert Dedushi</h3>
+
+                <div class="nav_links">
+                    <a href="https://github.com/adedushi/higher_or_lower" target="_blank"><img style="height:50px;width:50px;" src="https://img.icons8.com/ios/500/github--v1.png" alt="GitHub" /></a>
+                    <a href="https://www.linkedin.com/in/adedushi" target="_blank"><img style="height:50px;width:50px;" src="https://img.icons8.com/ios/500/linkedin.png" alt="LinkedIn" /></a>
+                </div>
                 
             </div>
-
             
-        </div>
-
-        <div class="modal">
-            <button type="submit" id="start">Start</button>
         </div>
 
     </div>
 
-</body>
+    <div id="modal-container">
+        <div id="modal">
+            <button id="modal-close">X</button>
+            <p>Welcome to Higher or Lower 
+            <!-- You will be presented with random popular products from Best Buy.
+            Try to guess whether the actual retail price is higher or lower than 
+            the placeholder price. Points are awarded for correct answers. 
+            Get the longest streak you can! -->
+            </p>
+            <button type="submit" id="start">Start</button>
+        </div>
+    </div>
 
+</body>
 
 
 </html>

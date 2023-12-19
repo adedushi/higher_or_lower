@@ -10,7 +10,11 @@ const highScore = document.querySelector('#high-score')
 const guessFeedback = document.querySelector('#feedback')
 const nextButton = document.querySelector('#next')
 const productLink = document.querySelector('#product-link')
+const modalOpen = document.querySelector('#modal-open')
+const modalClose = document.querySelector('#modal-close')
+const modal = document.querySelector('#modal-container')
 let lsHighScore = localStorage.getItem("highScore") || 0;
+
 
 const productHistory = [];
 const success = ["Correct!", "You're right!", "Nice one!"]
@@ -25,7 +29,7 @@ class Game {
     static generateURL() {
         let product_id = Game.selectProduct()
         while (productHistory.indexOf(product_id) > -1) product_id = Game.selectProduct()
-        const API_KEY = "";
+        const API_KEY = "FTJXEwF95489m9I5HzWazZ0l";
         return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
     }
 
@@ -64,31 +68,31 @@ class Game {
     async fetchProduct(e) {
         e.preventDefault();
 
-        try {
-            let res = await fetch(Game.generateURL());
+            try {
+                let res = await fetch(Game.generateURL());
 
 
-            if (res.ok) {
-                let resBody = await res.json();
+                if (res.ok) {
+                    let resBody = await res.json();
 
-                let id = resBody.products[0].sku
-                let name = resBody.products[0].name
-                let image = resBody.products[0].image
-                let price = resBody.products[0].salePrice
-                let URL = resBody.products[0].url
+                    let id = resBody.products[0].sku
+                    let name = resBody.products[0].name
+                    let image = resBody.products[0].image
+                    let price = resBody.products[0].salePrice
+                    let URL = resBody.products[0].url
 
-                this.product = new Product(id, name, image, price, URL);
-                this.product.assignPlaceholderPrice()
-                this.displayProduct();
+                    this.product = new Product(id, name, image, price, URL);
+                    this.product.assignPlaceholderPrice()
+                    this.displayProduct();
 
-            } else {
-                throw new Error(res)
-            }
-
-        } catch (err) {
+                } else {
+                    throw new Error(res)
+                }
+                
+            } 
+        catch (err) {
             console.error(err);
-        }
-
+    }
     }
 
     guessHigher() {
@@ -140,10 +144,34 @@ class Game {
 
 }
 
+
 let game = new Game()
 
 document.addEventListener('DOMContentLoaded', game.updateHighScore.bind(game));
 startButton.addEventListener('click', game.fetchProduct.bind(game));
+
+startButton.addEventListener('click', function() {
+    document.querySelector('.game').style.borderColor = "orange";
+    document.querySelector('.product').style.borderColor = "orange";
+    higherButton.style.display = "block"
+    lowerButton.style.display = "block"
+    startButton.style.display = "none"
+    modal.style.display = "none"
+})
+
+document.addEventListener('DOMContentLoaded', function() {
+    modal.style.display = "flex"
+})
+
+modalOpen.addEventListener('click', function () {
+    modal.style.display = "flex"
+})
+
+modalClose.addEventListener('click', function () {
+    modal.style.display = "none"
+})
+
+
 higherButton.addEventListener('click', game.guessHigher.bind(game));
 higherButton.addEventListener('click', game.changeButtons.bind(game));
 lowerButton.addEventListener('click', game.guessLower.bind(game));
