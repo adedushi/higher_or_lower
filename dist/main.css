@@ -1,50 +1,83 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+body {
+  color: #c24d2c;
+}
+
+.main_content {
+  background: #fbf2d5;
+}
+
+.product {
+  background: c24d2c;
+}
+
+body {
+  font-family: "Rubik Lines", serif;
+}
 
 img {
   max-width: 100%;
   height: auto;
-  width: 200px;
+  width: inherit;
   height: 200px;
   object-fit: contain;
-}
-
-#product-image {
-  width: 80%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .product {
   display: flex;
-  /* border: green solid; */
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 50%;
+  width: 200px;
+  border: orange 4px solid;
+}
+
+#product-image {
+  flex-basis: 75%;
+  mix-blend-mode: multiply;
+}
+
+#product-name {
+  width: inherit;
+  height: 100px;
+  flex-basis: 25%;
+  text-align: center;
 }
 
 .game {
+  flex-basis: 50%;
   display: flex;
   flex-direction: column;
-  /* border: pink solid; */
+  align-items: center;
+  justify-content: center;
+  border: orange 4px solid;
 }
 
 .program_container {
-    display: flex;
-    justify-content: center;
-    border: purple solid;
+  display: flex;
+  justify-content: center;
 }
 
 .main_content {
+  min-width: 600px;
+  min-height: 500px;
   display: flex;
+  justify-content: space-between;
   position: relative;
   flex-direction: column;
-  border: orange solid;
+  border: orange solid 4px;
+  border-radius: 6px;
 }
 
 .info_bar {
-    display: flex;
-    justify-content: space-between;
-    /* border: turquoise solid; */
+  display: flex;
+  justify-content: space-between;
+  /* border: turquoise solid; */
 }
 
 .nav_links {
@@ -55,6 +88,7 @@ img {
 
 .game_view {
   display: flex;
+  justify-content: space-between;
 }
 
 .scores {
@@ -62,17 +96,17 @@ img {
 }
 
 .buttons {
-    display: flex;
+  display: flex;
 }
 
 button {
   font-size: 10px;
-  /* border-radius: 12px; */
+  border-radius: 12px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 button.hover {
-  font-size: 10px;
-  /* border-radius: 12px; */
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  font-size: 20px;
+  border-radius: 12px;
+  background-color: #ddd;
 }

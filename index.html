@@ -5,21 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./src/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./src/reset.css" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Rubik+Lines&display=swap" rel="stylesheet">
     <script src="./dist/main.js" defer></script>
     <title>Higher or Lower</title>
 </head>
 
-<body>
-    <h1>Higher or Lower</h1>
+<body> 
 
     <div class="program_container">
         <div class="main_content">
 
             <div class="info_bar">
-                <h2 class="open_modal_button">Rules</h2>
-
+                <h6 class="open_modal_button">Rules</h6>
+                <h1>Higher or Lower</h1>
                 <div class="scores">
                     <h6 id="high-score">High Score: 0</h6>
                     <h6 id="current-score">Score: 0</h6>
@@ -48,15 +50,16 @@
             </div>
 
             <div class="nav_links">
-                <a href="https://github.com/adedushi/higher_or_lower">GitHub</a>
-                <a href="https://www.linkedin.com/in/adedushi">LinkedIn</a>
+                <a href="https://github.com/adedushi/higher_or_lower"><img style="height:50px;width:50px;" src="https://img.icons8.com/ios/500/github--v1.png" alt="GitHub" /></a>
+                <a href="https://www.linkedin.com/in/adedushi"><img style="height:50px;width:50px;" src="https://img.icons8.com/ios/500/linkedin.png" alt="LinkedIn" /></a>
+                
             </div>
 
-            <button type="submit" id="start">Start</button>
+            
         </div>
 
         <div class="modal">
-
+            <button type="submit" id="start">Start</button>
         </div>
 
     </div>
