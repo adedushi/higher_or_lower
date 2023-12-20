@@ -26,7 +26,8 @@ This project made use of the following technologies:
 
 The `product` is randomly assigned a placeholder price. This could be greater or less than the actual price by up to 20%. The placeholder is rounded to a reasonable number based on magnitude.
 
-```generatePlaceholderPrice(price) {
+```js
+generatePlaceholderPrice(price) {
 
 let  priceSalt  =  Math.random() * (Math.round(Math.random()) *  2  -  1);
 
@@ -60,7 +61,8 @@ return  Math.abs(price  -  placeholder) >  1.01  ?  placeholder  :  this.generat
 ```
 
 A user's high score is stored using the browser's built-in `localStorage`. The page is simultaneously updated to show any changes to the high score.
-```updateHighScore() {
+```js
+updateHighScore() {
 
 if (this.score  >  parseInt(lsHighScore)) {
 
