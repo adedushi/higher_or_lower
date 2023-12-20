@@ -10,18 +10,19 @@ body {
 }
 
 .main_content {
+    visibility: hidden;
     box-shadow: rgba(249, 109, 0, 0.4) 5px 5px,
         rgba(249, 109, 0, 0.3) 10px 10px,
         rgba(249, 109, 0, 0.2) 15px 15px,
         rgba(249, 109, 0, 0.1) 20px 20px,
         rgba(249, 109, 0, 0.05) 25px 25px;
-    min-width: 1000px;
-    min-height: 800px;
+    max-width: 100%;
+    max-height: 100%;
     display: flex;
     justify-content: space-between;
     position: relative;
     flex-direction: column;
-    // border: orange solid;
+    border: orange solid;
     border-radius: 6px;
 }
 
@@ -37,6 +38,7 @@ img {
 }
 
 .product {
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,7 +65,8 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 700px;
+    max-height: 100%;
+    min-height: 90%;
     gap: 20px;
     flex-wrap: wrap;
     border: transparent 4px solid;
@@ -99,7 +102,6 @@ img {
 button.hover {
     font-size: 20px;
     border-radius: 12px;
-    // box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     background-color: #ddd;
 }
 
@@ -142,22 +144,25 @@ button.hover {
 }
 
 #modal { 
-    box-shadow: rgba(249, 109, 0, 0.4) 5px 5px,
-            rgba(249, 109, 0, 0.3) 10px 10px;
-    margin-top: 250px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    box-shadow: rgba(249, 109, 0, 0.4) 5px 5px, rgba(249, 109, 0, 0.3) 10px 10px;
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 400px;
     height: 400px;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid orange;
     padding-bottom: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 6px;
     background: #fbf2d5;
     gap: 50px;
+    letter-spacing: .05rem;
+    line-height: 1.1
 }
 
 #modal-text{
@@ -184,7 +189,6 @@ button.hover {
 
 .bottom_bar {
     display: flex;
-    // gap: 600px;
     justify-content: space-between;
     align-items: center;
     padding-right: 30px;
@@ -252,19 +256,11 @@ button:active {
     align-self: center;
     font-size: 3rem;
     text-align: center;
-    // line-height: 80px;
     color: #fcedd8;
     font-family: 'Niconne', cursive;
     font-weight: 700;
     text-shadow: 1px 1px 0px #eb452b,
         2px 2px 0px #efa032,
-        // 5px 5px 0px #46b59b,
-        // 6px 6px 0px #017e7f,
-        // 7px 7px 0px #052939,
-        // 30px 30px 0px #c11a2b,
-        // 35px 35px 0px #c11a2b,
-        // 40px 40px 0px #c11a2b,
-        // 45px 45px 0px #c11a2b;
 }
 
 #product-link:link, #product-link:visited {

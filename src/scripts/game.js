@@ -85,15 +85,9 @@ class Game {
                     this.product = new Product(id, name, image, price, URL);
                     this.product.assignPlaceholderPrice()
                     this.displayProduct();
-                } 
-                // else {
-                //     throw new Error(res)
-                // }
-                
+                }   
             } 
-        catch (err) {
-            // console.error(err);
-    }
+            catch (err) {}
     }
 
     guessHigher() {
@@ -154,6 +148,7 @@ startButton.addEventListener('click', game.fetchProduct.bind(game));
 startButton.addEventListener('click', function() {
     document.querySelector('.game').style.borderColor = "orange";
     document.querySelector('.product').style.borderColor = "orange";
+    document.querySelector('.main_content').style.visibility = "visible";
     higherButton.style.display = "block"
     lowerButton.style.display = "block"
     startButton.style.display = "hidden"

@@ -108,13 +108,15 @@ body {
 }
 
 .main_content {
+  visibility: hidden;
   box-shadow: rgba(249, 109, 0, 0.4) 5px 5px, rgba(249, 109, 0, 0.3) 10px 10px, rgba(249, 109, 0, 0.2) 15px 15px, rgba(249, 109, 0, 0.1) 20px 20px, rgba(249, 109, 0, 0.05) 25px 25px;
-  min-width: 1000px;
-  min-height: 800px;
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
   justify-content: space-between;
   position: relative;
   flex-direction: column;
+  border: orange solid;
   border-radius: 6px;
 }
 
@@ -129,6 +131,7 @@ img {
 }
 
 .product {
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,7 +158,8 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 700px;
+  max-height: 100%;
+  min-height: 90%;
   gap: 20px;
   flex-wrap: wrap;
   border: transparent 4px solid;
@@ -231,21 +235,25 @@ button.hover {
 }
 
 #modal {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
   box-shadow: rgba(249, 109, 0, 0.4) 5px 5px, rgba(249, 109, 0, 0.3) 10px 10px;
-  margin-top: 250px;
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 400px;
   height: 400px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid orange;
   padding-bottom: 20px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 6px;
   background: #fbf2d5;
   gap: 50px;
+  letter-spacing: 0.05rem;
+  line-height: 1.1;
 }
 
 #modal-text {
