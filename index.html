@@ -10,23 +10,32 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Rubik+Lines&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Niconne&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Niconne&display=swap" rel="stylesheet">
     <script src="./dist/main.js" defer></script>
     <title>Higher or Lower</title>
 </head>
 
+
+
+
 <body> 
+    <section>
+        <div class='air air1'></div>
+        <div class='air air2'></div>
+        <div class='air air3'></div>
+        <div class='air air4'></div>
+    </section>
+
     <h1 id="title">Higher or Lower</h1> 
 
     <div class="program_container">
         <div class="main_content">
 
             <div class="info_bar">
-                <h6 id="modal-open">Rules</h6>
+                <h5 id="modal-open">About</h5>
                 <div class="scores">
-                    <h6 id="high-score">High Score: 0</h6>
-                    <h6 id="current-score">Score: 0</h6>
+                    <h5 id="high-score">High Score: 0</h5>
+                    <h5 id="current-score">Score: 0</h5>
                 </div>
 
             </div>
@@ -39,8 +48,8 @@
 
 
                 <div class="game">
-                    <h6 id="placeholder-price"></h6>
-                    <h6 id="feedback"></h6>
+                    <h2 id="placeholder-price"></h2>
+                    <h3 id="feedback"></h3>
                     <a href="" target="_blank" style="visibility: hidden" id="product-link">See Product Details</a>
                     <div class="buttons"> 
                         <button type="submit" id="higher" style="display: none">Higher</button>
@@ -52,7 +61,7 @@
             </div>
 
             <div class="bottom_bar">
-                <h3>Created by Albert Dedushi</h3>
+                <h5>Created by Albert Dedushi</h5>
 
                 <div class="nav_links">
                     <a href="https://github.com/adedushi/higher_or_lower" target="_blank"><img style="height:50px;width:50px;" src="https://img.icons8.com/ios/500/github--v1.png" alt="GitHub" /></a>
@@ -68,12 +77,14 @@
     <div id="modal-container">
         <div id="modal">
             <button id="modal-close">X</button>
-            <p>Welcome to Higher or Lower 
-            <!-- You will be presented with random popular products from Best Buy.
-            Try to guess whether the actual retail price is higher or lower than 
-            the placeholder price. Points are awarded for correct answers. 
-            Get the longest streak you can! -->
-            </p>
+            <div id="modal-text">
+                <h3>Welcome to Higher or Lower</h3>
+                <p>
+                    You will be presented with popular products from Best Buy. Try 
+                    to guess whether the actual retail price is higher or lower than 
+                    the provided price. Points are awarded for correct answers. 
+                    Get the longest streak you can!
+                </p>
             <button type="submit" id="start">Start</button>
         </div>
     </div>

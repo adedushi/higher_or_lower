@@ -42,7 +42,7 @@ class Game {
         startButton.style.display = "none";
         guessFeedback.innerHTML = ""
         productLink.style.visibility = "hidden";
-        console.log(this.product);
+        // console.log(this.product);
 
         let productName = document.createElement('h3')
         productName.setAttribute("id", "product-name")
@@ -85,14 +85,14 @@ class Game {
                     this.product = new Product(id, name, image, price, URL);
                     this.product.assignPlaceholderPrice()
                     this.displayProduct();
-
-                } else {
-                    throw new Error(res)
-                }
+                } 
+                // else {
+                //     throw new Error(res)
+                // }
                 
             } 
         catch (err) {
-            console.error(err);
+            // console.error(err);
     }
     }
 
@@ -156,7 +156,7 @@ startButton.addEventListener('click', function() {
     document.querySelector('.product').style.borderColor = "orange";
     higherButton.style.display = "block"
     lowerButton.style.display = "block"
-    startButton.style.display = "none"
+    startButton.style.display = "hidden"
     modal.style.display = "none"
 })
 
