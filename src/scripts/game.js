@@ -1,5 +1,6 @@
 import Product from "./product.js";
 import products from "./products.js";
+
 const startButton = document.querySelector('#start')
 const productDisplay = document.querySelector('#product-display')
 const placeholderPrice = document.querySelector('#placeholder-price')
@@ -17,7 +18,7 @@ let lsHighScore = localStorage.getItem("highScore") || 0;
 
 
 const productHistory = [];
-const success = ["Correct!", "You're right!", "Nice one!"]
+const success = ["Correct!", "Well done!", "Nice one!"]
 const failure = ["Close one!", "Sorry!", "Almost!"]
 
 class Game {
@@ -29,7 +30,7 @@ class Game {
     static generateURL() {
         let product_id = Game.selectProduct()
         while (productHistory.indexOf(product_id) > -1) product_id = Game.selectProduct()
-        const API_KEY = "FTJXEwF95489m9I5HzWazZ0l";
+        const API_KEY = "";
         return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
     }
 
