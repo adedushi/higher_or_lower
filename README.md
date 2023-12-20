@@ -28,52 +28,31 @@ The `product` is randomly assigned a placeholder price. This could be greater or
 
 ```js
 generatePlaceholderPrice(price) {
+    let priceSalt = Math.random() * (Math.round(Math.random()) * 2 - 1);
+    let placeholder = price + (price * priceSalt * .2);
 
-let  priceSalt  =  Math.random() * (Math.round(Math.random()) *  2  -  1);
+    if (price < 10) {
+        placeholder = Math.ceil(placeholder + 1)
+    } else if (price < 100) {
+        placeholder = (Math.ceil(placeholder / 10) * 10)
+    } else if (price < 1000) {
+        placeholder = (Math.ceil(placeholder / 50) * 50)
+    } else {
+        placeholder = (Math.ceil(placeholder / 100) * 100)
+    }
 
-let  placeholder  =  price  + (price  *  priceSalt  *  .2);
-
-  
-
-if (price  <  10) {
-
-placeholder  =  Math.ceil(placeholder  +  1)
-
-} else  if (price  <  100) {
-
-placeholder  = (Math.ceil(placeholder  /  10) *  10)
-
-} else  if (price  <  1000) {
-
-placeholder  = (Math.ceil(placeholder  /  50) *  50)
-
-} else {
-
-placeholder  = (Math.ceil(placeholder  /  100) *  100)
-
-}
-
-  
-
-return  Math.abs(price  -  placeholder) >  1.01  ?  placeholder  :  this.generatePlaceholderPrice(price)
-
+    return Math.abs(price - placeholder) > 1.01 ? placeholder : this.generatePlaceholderPrice(price)
 }
 ```
 
 A user's high score is stored using the browser's built-in `localStorage`. The page is simultaneously updated to show any changes to the high score.
 ```js
 updateHighScore() {
-
-if (this.score  >  parseInt(lsHighScore)) {
-
-localStorage.setItem("highScore", this.score);
-
-lsHighScore  =  localStorage.getItem("highScore");
-
-}
-
-highScore.innerHTML  =  `High Score: ${lsHighScore}`;
-
+    if (this.score > parseInt(lsHighScore)) {
+        localStorage.setItem("highScore", this.score);
+        lsHighScore = localStorage.getItem("highScore");
+    }
+    highScore.innerHTML = `High Score: ${lsHighScore}`;
 }
 ```
 ## Future Improvements
