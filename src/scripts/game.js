@@ -30,7 +30,7 @@ class Game {
     static generateURL() {
         let product_id = Game.selectProduct()
         while (productHistory.indexOf(product_id) > -1) product_id = Game.selectProduct()
-        const API_KEY = "";
+        const API_KEY = "FTJXEwF95489m9I5HzWazZ0l";
         return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
     }
 

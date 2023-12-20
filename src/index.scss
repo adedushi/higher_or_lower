@@ -103,10 +103,30 @@ button.hover {
     background-color: #ddd;
 }
 
-#modal-open:hover{
-    // fix colors and shadow effect
-    text-shadow: 0 0 7px rgba(45, 35, 66, 0.4), 0 0 122px rgba(45, 35, 66, 0.3);
-    transform: translateY(-2px);
+
+#modal-open {
+    color: #18272F;
+    position: relative;
+    text-decoration: none;
+}
+
+#modal-open::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #18272F;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+
+#modal-open:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
 }
 
 #modal-container {
