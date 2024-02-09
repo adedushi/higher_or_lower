@@ -28,13 +28,13 @@ class Game {
     }
 
     static generateURL() {
-        let product_id = Game.selectProduct()
-        while (productHistory.indexOf(product_id) > -1) product_id = Game.selectProduct()
+        let productId = Game.selectProduct()
+        while (productHistory.indexOf(productId) > -1) productId = Game.selectProduct()
         const API_KEY = "FTJXEwF95489m9I5HzWazZ0l";
-        return `https://api.bestbuy.com/v1/products(sku=${product_id})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
+        return `https://api.bestbuy.com/v1/products(sku=${productId})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
     }
 
-    static selectProduct(){
+    static selectProduct() {
         return products[Math.floor(Math.random() * products.length)];
     }
 
@@ -47,12 +47,12 @@ class Game {
         let productName = document.createElement('h3')
         productName.setAttribute("id", "product-name")
         productName.innerHTML = this.product.name
-        
+
 
         let productImage = document.createElement('img')
         productImage.setAttribute("id", "product-image")
         productImage.src = this.product.image
-        
+
 
         placeholderPrice.innerHTML = `$${this.product.placeholderPrice}.00`
 
@@ -63,31 +63,31 @@ class Game {
 
         productDisplay.append(productName);
         productDisplay.append(productImage);
-        
+
     }
 
     async fetchProduct(e) {
         e.preventDefault();
 
-            try {
-                let res = await fetch(Game.generateURL());
+        try {
+            let res = await fetch(Game.generateURL());
 
 
-                if (res.ok) {
-                    let resBody = await res.json();
+            if (res.ok) {
+                let resBody = await res.json();
 
-                    let id = resBody.products[0].sku
-                    let name = resBody.products[0].name
-                    let image = resBody.products[0].image
-                    let price = resBody.products[0].salePrice
-                    let URL = resBody.products[0].url
+                let id = resBody.products[0].sku
+                let name = resBody.products[0].name
+                let image = resBody.products[0].image
+                let price = resBody.products[0].salePrice
+                let URL = resBody.products[0].url
 
-                    this.product = new Product(id, name, image, price, URL);
-                    this.product.assignPlaceholderPrice()
-                    this.displayProduct();
-                }   
-            } 
-            catch (err) {}
+                this.product = new Product(id, name, image, price, URL);
+                this.product.assignPlaceholderPrice()
+                this.displayProduct();
+            }
+        }
+        catch (err) { }
     }
 
     guessHigher() {
@@ -98,7 +98,7 @@ class Game {
         this.product.price < this.product.placeholderPrice ? this.correct() : this.incorrect()
     }
 
-    correct(){
+    correct() {
         this.score++;
         this.updateHighScore();
         productHistory.push(this.product.id);
@@ -145,17 +145,17 @@ let game = new Game()
 document.addEventListener('DOMContentLoaded', game.updateHighScore.bind(game));
 startButton.addEventListener('click', game.fetchProduct.bind(game));
 
-startButton.addEventListener('click', function() {
+startButton.addEventListener('click', function () {
     document.querySelector('.game').style.borderColor = "orange";
     document.querySelector('.product').style.borderColor = "orange";
-    document.querySelector('.main_content').style.visibility = "visible";
+    document.querySelector('.main-content').style.visibility = "visible";
     higherButton.style.display = "block"
     lowerButton.style.display = "block"
     startButton.style.display = "hidden"
     modal.style.display = "none"
 })
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     modal.style.display = "flex"
 })
 

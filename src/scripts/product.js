@@ -1,5 +1,5 @@
-class Product{
-    constructor(id, name, image, price, URL){
+class Product {
+    constructor(id, name, image, price, URL) {
         this.id = id;
         this.name = name;
         this.image = image
@@ -24,12 +24,12 @@ class Product{
         return Math.abs(price - placeholder) > 1.01 ? placeholder : this.generatePlaceholderPrice(price)
     }
 
-    assignPlaceholderPrice(){
+    assignPlaceholderPrice() {
         this.placeholderPrice = this.generatePlaceholderPrice(this.price)
     }
 
     guessHigher() {
-        return (this.price > this.placeholderPrice); 
+        return (this.price > this.placeholderPrice);
     }
 
     guessLower() {
