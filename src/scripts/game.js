@@ -1,6 +1,8 @@
 import Product from "./product.js";
 import products from "./products.js";
 
+const title = document.getElementById('title')
+const buttons = document.querySelector('.buttons')
 const startButton = document.querySelector('#start')
 const productDisplay = document.querySelector('#product-display')
 const placeholderPrice = document.querySelector('#placeholder-price')
@@ -42,7 +44,6 @@ class Game {
         startButton.style.display = "none";
         guessFeedback.innerHTML = ""
         productLink.style.visibility = "hidden";
-        // console.log(this.product);
 
         let productName = document.createElement('h3')
         productName.setAttribute("id", "product-name")
@@ -66,28 +67,57 @@ class Game {
 
     }
 
+    disableButtons() {
+        higherButton.disabled = true;
+        lowerButton.disabled = true;
+        nextButton.disabled = true;
+        nextButton.innerHTML = 'Loading';
+    }
+
+    enableButtons() {
+        higherButton.disabled = false;
+        lowerButton.disabled = false;
+
+        if (nextButton.style.display === "block") {
+            nextButton.disabled = false;
+            nextButton.innerHTML = 'Next';
+        }
+    }
+
+
     async fetchProduct(e) {
         e.preventDefault();
+        this.disableButtons();
+        let attempts = 0;
 
-        try {
-            let res = await fetch(Game.generateURL());
+        while (attempts < 2) {
+            try {
+                let res = await fetch(Game.generateURL());
 
 
-            if (res.ok) {
-                let resBody = await res.json();
+                if (res.ok) {
+                    let resBody = await res.json();
 
-                let id = resBody.products[0].sku
-                let name = resBody.products[0].name
-                let image = resBody.products[0].image
-                let price = resBody.products[0].salePrice
-                let URL = resBody.products[0].url
+                    let id = resBody.products[0].sku
+                    let name = resBody.products[0].name
+                    let image = resBody.products[0].image
+                    let price = resBody.products[0].salePrice
+                    let URL = resBody.products[0].url
 
-                this.product = new Product(id, name, image, price, URL);
-                this.product.assignPlaceholderPrice()
-                this.displayProduct();
+                    this.product = new Product(id, name, image, price, URL);
+                    this.product.assignPlaceholderPrice()
+                    this.displayProduct();
+                    this.enableButtons();
+                    return this.changeButtons();
+                }
+            } catch (err) { }
+
+            attempts += 1
+            if (attempts < 2) {
+                await new Promise(resolve => setTimeout(resolve, 100));
             }
         }
-        catch (err) { }
+        this.enableButtons();
     }
 
     guessHigher() {
@@ -139,6 +169,9 @@ class Game {
 
 }
 
+function visitHomePage() {
+    window.location.href = '/';
+}
 
 let game = new Game()
 
@@ -149,6 +182,7 @@ startButton.addEventListener('click', function () {
     document.querySelector('.game').style.borderColor = "orange";
     document.querySelector('.product').style.borderColor = "orange";
     document.querySelector('.main-content').style.visibility = "visible";
+    buttons.style.visibility = "visible"
     higherButton.style.display = "block"
     lowerButton.style.display = "block"
     startButton.style.display = "hidden"
@@ -168,11 +202,12 @@ modalClose.addEventListener('click', function () {
 })
 
 
+
+title.addEventListener('click', visitHomePage);
 higherButton.addEventListener('click', game.guessHigher.bind(game));
 higherButton.addEventListener('click', game.changeButtons.bind(game));
 lowerButton.addEventListener('click', game.guessLower.bind(game));
 lowerButton.addEventListener('click', game.changeButtons.bind(game));
 nextButton.addEventListener('click', game.fetchProduct.bind(game));
-nextButton.addEventListener('click', game.changeButtons.bind(game));
 
 export default Game;
