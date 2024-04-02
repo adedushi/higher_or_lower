@@ -101,6 +101,7 @@ img {
 
 .buttons {
     display: flex;
+    gap: 10px;
 }
 
 
@@ -150,30 +151,26 @@ button.hover {
 }
 
 #modal {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     box-shadow: rgba(249, 109, 0, 0.4) 5px 5px, rgba(249, 109, 0, 0.3) 10px 10px;
     margin-top: 150px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     max-width: 400px;
-    max-height: 400px;
+    max-height: 70vh;
     background-color: white;
     border: 1px solid orange;
-    padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 6px;
     background: #fbf2d5;
-    gap: 50px;
-    letter-spacing: .05rem;
-    line-height: 1.1
+    letter-spacing: .02rem;
+    line-height: 1.5;
 }
 
 #modal-text {
     display: flex;
-    // gap: 30px;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -183,9 +180,23 @@ button.hover {
     font-size: 25px;
 }
 
+#modal-description>li {
+    padding: 10px;
+    margin: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 2px 2px 4px #ccc;
+    color: #333;
+    font-size: 1em;
+}
+
+#modal-description>li::marker{
+    content: attr(data-emoji);
+}
+
 
 #modal-close {
     align-self: flex-end;
+    visibility: hidden;
 }
 
 #start {
@@ -288,7 +299,17 @@ button:active {
     border-radius: 4px;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 480px) {
+
+    h1, h2, h3, h4 {
+        font-size: 1.1em;
+    }
+
+    h5 {
+        font-size: .8em;
+    }
+
+
     body {
         display: flex;
         flex-direction: row;
@@ -297,10 +318,10 @@ button:active {
     }
 
     .program-container {
-        width: 90vw;
-        height: 70vh;
+        width: 90%;
+        height: 75%;
         position: absolute;
-        top: 100px;
+        top: 80px;
         display: flex;
         justify-content: center;
     }
@@ -324,22 +345,22 @@ button:active {
 
     img {
         height: auto;
-        width: 180px;
-        height: 180px;
+        max-width: 36vw;
+        max-height: 36vh;
         object-fit: contain;
         margin-left: auto;
         margin-right: auto;
-        display: block;
+        display:block
     }
 
     .product {
-        padding-top: 10px;
+        padding-top: 20px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        flex-basis: 50%;
-        width: inherit;
-        border: transparent 4px solid;
+        align-items: center;
+        flex-basis: 75%;
+        width: auto;
+        border: none;
     }
 
     #product-image {
@@ -349,9 +370,10 @@ button:active {
 
     #product-name {
         width: inherit;
-        height: 100px;
+        height: 50px;
         flex-basis: 25%;
         text-align: center;
+        display: inline-block;
     }
 
     .game {
@@ -362,9 +384,9 @@ button:active {
         justify-content: center;
         max-height: 100%;
         min-height: 0%;
-        gap: 0px;
-        flex-wrap: wrap;
-        border: transparent 4px solid;
+        gap: 5px;
+        flex-wrap: nowrap;
+        border: none;
     }
 
     .info-bar {
@@ -373,8 +395,9 @@ button:active {
         justify-content: space-between;
         align-items: center;
         padding-top: 5px;
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 20px;
+        padding-left: 20px;
+        flex-basis: 10%;
     }
 
     .game-view {
@@ -435,42 +458,46 @@ button:active {
     }
 
     #modal {
-        font-family: 'Roboto', sans-serif;
         font-size: 12px;
         box-shadow: rgba(249, 109, 0, 0.4) 5px 5px, rgba(249, 109, 0, 0.3) 10px 10px;
-        margin-top: 150px;
+        margin-top: 100px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
         max-width: 80%;
-        // max-height: 50vh;
+        max-height: 50vh;
         background-color: white;
         border: 1px solid orange;
-        padding-bottom: 20px;
         padding-left: 10px;
         padding-right: 10px;
         border-radius: 6px;
         background: #fbf2d5;
         gap: 0px;
-        letter-spacing: .05rem;
         line-height: 1.1
     }
 
     #modal-text {
         display: flex;
-        gap: 0px;
         flex-direction: column;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
     }
 
     #modal-text>p {
-        font-size: 20px;
+        font-size: 24px;
     }
-
 
     #modal-close {
         align-self: flex-end;
+        visibility: hidden;
+    }
+
+    #modal-description>li {
+        padding: 10px;
+        margin: 10px;
+        background-color: #f5f5f5;
+        box-shadow: 2px 2px 4px #ccc;
+        color: #333;
+        font-size: 1.25em;
     }
 
     #start {
@@ -482,8 +509,9 @@ button:active {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 20px;
+        padding-left: 20px;
+        flex-basis: 10%;
     }
 
     .navlinks {
@@ -508,8 +536,8 @@ button:active {
         line-height: 1;
         list-style: none;
         overflow: hidden;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
         position: relative;
         text-align: left;
         text-decoration: none;
@@ -519,7 +547,7 @@ button:active {
         touch-action: manipulation;
         white-space: nowrap;
         will-change: box-shadow, transform;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     button:focus {

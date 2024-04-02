@@ -179,8 +179,6 @@ document.addEventListener('DOMContentLoaded', game.updateHighScore.bind(game));
 startButton.addEventListener('click', game.fetchProduct.bind(game));
 
 startButton.addEventListener('click', function () {
-    document.querySelector('.game').style.borderColor = "orange";
-    document.querySelector('.product').style.borderColor = "orange";
     document.querySelector('.main-content').style.visibility = "visible";
     buttons.style.visibility = "visible"
     higherButton.style.display = "block"
@@ -195,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 modalOpen.addEventListener('click', function () {
     modal.style.display = "flex"
+    modalClose.style.visibility = "visible"
 })
 
 modalClose.addEventListener('click', function () {

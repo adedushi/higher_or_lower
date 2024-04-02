@@ -1,6 +1,8 @@
 
 # Welcome to Higher or Lower
-**URL: https://adedushi.github.io/higher_or_lower/**
+
+### [LIVE LINK](https://adedushi.com/higher_or_lower/)
+
 ##
 ![Gameplay](https://github.com/adedushi/higher_or_lower/blob/main/assets/gameplay.png)
 ## Description

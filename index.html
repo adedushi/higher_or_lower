@@ -8,10 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta property="og:title" content="Higher or Lower" />
     <meta property="og:image" content="./assets/gameplay.png" />
-    <meta name="og:author" content="Albert Dedushi">
-    <meta property="og:description" content="Higher or Lower is a dynamic take on the classic mini-game “More or Less” from “The Price is Right.” built in JavaScript" />
+    <meta name="author" content="Albert Dedushi">
+    <meta property="og:description" content="Higher or Lower is a dynamic take on the classic mini-game “More or Less” from “The Price is Right” built in JavaScript" />
     <meta property="og:url" content="https://adedushi.com/higher_or_lower/" />
-    
 
     <link rel="stylesheet" href="./src/reset.css" />
     <link rel="stylesheet" href="./dist/main.css" />
@@ -90,12 +89,12 @@
             <div id="modal-text">
                 <p>Welcome to Higher or Lower!</p>
                 <br />
-                <p>
-                    You will be presented with popular products from Best Buy™. Try
-                    to guess whether the actual retail price is higher or lower than
-                    the provided price. Points are awarded for correct answers.
-                    Get the longest streak you can!
-                </p>
+                <div id="modal-description">
+                    <li data-emoji="🛒"> You will be presented with popular products from Best Buy™.</li>
+                    <li data-emoji="💵"> Try to guess whether the actual retail price is higher or lower than the provided price.</li>
+                    <li data-emoji="✅"> Points are awarded for correct answers.</li>
+                    <li data-emoji="🏆"> Get the longest streak you can!</li>
+                </div>
                 <button type="submit" id="start">Start</button>
             </div>
         </div>
