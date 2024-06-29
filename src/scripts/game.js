@@ -32,7 +32,7 @@ class Game {
     static generateURL() {
         let productId = Game.selectProduct()
         while (productHistory.indexOf(productId) > -1) productId = Game.selectProduct()
-        const API_KEY = "FTJXEwF95489m9I5HzWazZ0l";
+        const API_KEY = "";
         return `https://api.bestbuy.com/v1/products(sku=${productId})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
     }
 
@@ -170,7 +170,7 @@ class Game {
 }
 
 function visitHomePage() {
-    window.location.href = '/';
+    window.location.href = 'https://adedushi.com/higher_or_lower/';
 }
 
 let game = new Game()
