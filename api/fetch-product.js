@@ -2,6 +2,10 @@ export default async (req, res) => {
     const API_KEY = process.env.API_KEY;
     const productId = req.query.productId;
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
     try {
         const response = await fetch(`https://api.bestbuy.com/v1/products(sku=${productId})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`);
 
