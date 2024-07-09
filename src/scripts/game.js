@@ -29,11 +29,8 @@ class Game {
         this.score = 0;
     }
 
-    static generateURL() {
-        let productId = Game.selectProduct()
-        while (productHistory.indexOf(productId) > -1) productId = Game.selectProduct()
-        const API_KEY = "";
-        return `https://api.bestbuy.com/v1/products(sku=${productId})?apiKey=${API_KEY}&sort=name.asc&show=name,image,salePrice,url,sku&format=json`
+    static generateURL(productId) {
+        return `https://higher-or-lower-function.vercel.app/api/fetch-product?productId=${productId}`;
     }
 
     static selectProduct() {
@@ -92,12 +89,11 @@ class Game {
 
         while (attempts < 2) {
             try {
-                let res = await fetch(Game.generateURL());
-
+                let productId = Game.selectProduct()
+                let res = await fetch(Game.generateURL(productId));
 
                 if (res.ok) {
                     let resBody = await res.json();
-
                     let id = resBody.products[0].sku
                     let name = resBody.products[0].name
                     let image = resBody.products[0].image
