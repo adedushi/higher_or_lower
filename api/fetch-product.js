@@ -14,7 +14,11 @@ export default async (req, res) => {
         }
 
         const data = await response.json();
-        res.status(200).json(data);
+        const filteredData = {
+            products: data.products
+        };
+
+        res.status(200).json(filteredData);
     } catch (error) {
         res.status(500).json({ error: 'Server Error' });
     }
